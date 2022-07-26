@@ -1,6 +1,9 @@
 <?php
 
+use App\Mail\TopicCreated;
 use Illuminate\Support\Facades\Route;
+use App\Services\Notification\Notification;
+use App\Models\User;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,5 +17,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+   $notification= resolve(Notification::class);
+   $notification->sendEmail(User::find(1), new TopicCreated());
 });
