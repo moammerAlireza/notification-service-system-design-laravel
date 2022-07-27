@@ -18,5 +18,5 @@ use App\Models\User;
 
 Route::get('/', function () {
    $notification= resolve(Notification::class);
-   $notification->sendEmail(User::find(1), new TopicCreated());
+   $notification->sendSms(User::find(1),'example sms');
 });
